@@ -1,0 +1,30 @@
+﻿/*
+   New Perspectives on HTML and CSS
+   Tutorial 3
+   Case Problem 2
+
+   Mountain Wheels Text and Color Style
+   Author: Chistian Kolehmainen
+   Date:   9/1/2017
+
+   Filename:         mw_layout.css
+   Supporting Files: none
+
+*/
+p{
+	   font-family: 'Tahoma, Geneva, sans-serif';
+}
+#ArticaleHeader{
+	font-size: 18p;
+	kerning: 7p;
+	text-align: center;
+}
+nav ul{
+	background-color: rgb(125, 120, 89);
+	line-height: 3em;
+	list-style:none;
+}
+nav ul li a {
+ color: white;
+ text-decoration: none;
+}
