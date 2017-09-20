@@ -1,0 +1,23 @@
+/*
+   New Perspectives on HTML and CSS
+   Tutorial 4
+   Case Problem 2
+
+   Pizza Style Sheet
+   Author: 
+   Date:   
+
+   Filename:         pizza.css
+   Supporting Files: 
+
+*/
+nav, header, footer, section aside {
+	padding: 0px;
+	margin: 0px;
+   display: block;
+
+}
+body{
+	background-color: red;
+	font-family: Verdana, Geneva, sans-serif;
+}
