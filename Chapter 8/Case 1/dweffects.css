@@ -1,0 +1,25 @@
+/*
+   New Perspectives on HTML and CSS
+   Tutorial 8
+   Case Problem 1
+   Special Effects style sheet
+   Author: 
+   Date:   
+
+   Filename:         dweffects.css
+   Supporting Files: 
+
+*/
+
+body{ 
+	background-color: rgb(211, 211, 211);
+	 box-shadow: -10px  0px 15px #888, 10px 0px 15px #888;
+ } 
+nav.horizontal li{
+background-color:  rgb(224, 238, 238);
+border-radius: 10px;
+box-shadow:3px 3px 2px  white inset, 5px -3px 5px rgb(147, 207, 207) inset ; 
+ }
+article{
+	box-shadow:15px 15px 75px rgb(171, 171, 171) inset, 5px 5px 5px rgb(101, 101, 101);
+}
