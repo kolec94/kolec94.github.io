@@ -1,0 +1,22 @@
+/*
+   New Perspectives on HTML and CSS
+   Tutorial 7
+   Tutorial Case
+
+   Jumbo Popcorn Style Sheet
+   Author: 
+   Date:   
+
+   Filename:         clips.css
+   Supporting Files: 
+
+*/
+audio ,video{
+ background-color: white;
+ display: block;
+ margin: 5px auto;
+ width: 95%;
+ text-align: center;
+}
+
+
