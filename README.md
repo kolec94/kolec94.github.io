@@ -18,6 +18,10 @@ The homepage provides a lightweight project index with links to:
 - The `tdongle-s3-hid` GitHub Pages site.
 - Current public hardware, firmware, and operations-tooling repositories.
 
+Old coursework chapter exports are intentionally not kept in this repository.
+This repo is now scoped to the public profile landing page and direct supporting
+assets only.
+
 ## Validation
 
 After changing the site, confirm that the Pages deployment succeeds and that
