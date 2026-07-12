@@ -25,6 +25,7 @@
         linear-gradient(rgba(74, 103, 58, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(74, 103, 58, 0.08) 1px, transparent 1px),
         linear-gradient(180deg, #fbfff4 0, #eef6e7 54%, #f8faf4 100%);
+      --hero-grid: rgba(183, 255, 74, 0.16);
       --hero-glow: rgba(139, 210, 47, 0.26);
       --panel-glass: rgba(255, 255, 255, 0.88);
     }
@@ -49,6 +50,7 @@
         linear-gradient(90deg, rgba(139, 210, 47, 0.07) 1px, transparent 1px),
         radial-gradient(circle at 20% 8%, rgba(139, 210, 47, 0.14), transparent 34rem),
         linear-gradient(180deg, #040604 0, #071006 52%, #050805 100%);
+      --hero-grid: rgba(139, 210, 47, 0.09);
       --hero-glow: rgba(139, 210, 47, 0.34);
       --panel-glass: rgba(7, 12, 7, 0.84);
     }
@@ -202,8 +204,8 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(139, 210, 47, 0.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139, 210, 47, 0.09) 1px, transparent 1px);
+        linear-gradient(var(--hero-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
       background-size: 34px 34px;
       mask-image: linear-gradient(90deg, black, transparent 88%);
     }
