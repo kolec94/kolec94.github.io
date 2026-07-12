@@ -22,6 +22,16 @@ Old coursework chapter exports are intentionally not kept in this repository.
 This repo is now scoped to the public profile landing page and direct supporting
 assets only.
 
+## Repository Layout
+
+- `index.html` - root GitHub Pages homepage.
+- `README.md` - repository documentation and maintenance notes.
+- `tdongle/` - standalone project page assets for the T-Dongle S3 HID work.
+
+Legacy root-level `.htm`, old CSS, unused images, tutorial assets, and temporary
+text files are intentionally removed so the repository only contains current
+Pages content.
+
 ## Validation
 
 After changing the site, confirm that the Pages deployment succeeds and that
