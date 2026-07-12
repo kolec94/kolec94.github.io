@@ -4,52 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Christian Kolehmainen</title>
-  <meta name="description" content="Projects and technical work by Christian Kolehmainen.">
+  <meta name="description" content="Practical tools for labs, devices, and operations.">
   <style>
     :root {
       color-scheme: light dark;
-      --ink: #18212f;
-      --muted: #5d6a7a;
-      --paper: #fffaf2;
+      --bg: #f4f7ef;
+      --surface: #ffffff;
+      --surface-2: #eef4e8;
+      --ink: #111a13;
+      --muted: #52604f;
+      --line: #c9d7c3;
+      --grid: rgba(74, 103, 58, 0.14);
+      --terminal: #0b0f0c;
+      --terminal-2: #111810;
+      --lime: #8bd22f;
+      --lime-2: #b7ff4a;
       --white: #ffffff;
-      --line: #d9e0e8;
-      --mint: #23b77e;
-      --blue: #2f80ed;
-      --coral: #f06449;
-      --gold: #f2b705;
-      --violet: #7c5cff;
-      --sky: #dff2ff;
-      --green-soft: #def8eb;
-      --orange-soft: #ffe7d7;
-      --violet-soft: #eee8ff;
-      --shadow: 0 18px 45px rgba(40, 54, 74, 0.12);
-      --body-bg: linear-gradient(180deg, #fffdf8 0, #fff4e6 34rem, #f6fbff 68rem, #fffaf2 100%);
-      --board-glass: rgba(255, 255, 255, 0.86);
-      --signal-border: rgba(24, 33, 47, 0.08);
-      --signal-hover: rgba(47, 128, 237, 0.5);
+      --shadow: 0 18px 45px rgba(32, 45, 30, 0.14);
+      --body-bg:
+        linear-gradient(rgba(74, 103, 58, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74, 103, 58, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, #fbfff4 0, #eef6e7 54%, #f8faf4 100%);
+      --hero-glow: rgba(139, 210, 47, 0.26);
+      --panel-glass: rgba(255, 255, 255, 0.88);
     }
 
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --ink: #f5f7fb;
-      --muted: #aeb9c8;
-      --paper: #10141f;
-      --white: #171d2a;
-      --line: #2d3748;
-      --mint: #54dba0;
-      --blue: #75b7ff;
-      --coral: #ff826b;
-      --gold: #ffd166;
-      --violet: #a996ff;
-      --sky: #173754;
-      --green-soft: #153f32;
-      --orange-soft: #4a2c24;
-      --violet-soft: #302a54;
-      --shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
-      --body-bg: linear-gradient(180deg, #10141f 0, #151827 34rem, #101d2a 68rem, #10141f 100%);
-      --board-glass: rgba(18, 24, 36, 0.86);
-      --signal-border: rgba(255, 255, 255, 0.08);
-      --signal-hover: rgba(117, 183, 255, 0.55);
+      --bg: #050805;
+      --surface: #0c120d;
+      --surface-2: #111a12;
+      --ink: #f4f7ef;
+      --muted: #a7b49f;
+      --line: #22331f;
+      --grid: rgba(139, 210, 47, 0.12);
+      --terminal: #030503;
+      --terminal-2: #091008;
+      --lime: #91d927;
+      --lime-2: #c3ff57;
+      --white: #ffffff;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+      --body-bg:
+        linear-gradient(rgba(139, 210, 47, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 210, 47, 0.07) 1px, transparent 1px),
+        radial-gradient(circle at 20% 8%, rgba(139, 210, 47, 0.14), transparent 34rem),
+        linear-gradient(180deg, #040604 0, #071006 52%, #050805 100%);
+      --hero-glow: rgba(139, 210, 47, 0.34);
+      --panel-glass: rgba(7, 12, 7, 0.84);
     }
 
     * {
@@ -57,7 +58,7 @@
     }
 
     html {
-      background: var(--paper);
+      background: var(--bg);
     }
 
     body {
@@ -66,7 +67,9 @@
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
-      background: var(--body-bg);
+      background-color: var(--bg);
+      background-image: var(--body-bg);
+      background-size: 32px 32px, 32px 32px, auto;
     }
 
     a {
@@ -75,13 +78,13 @@
     }
 
     a:hover {
-      color: var(--blue);
+      color: var(--lime);
     }
 
     .page {
-      width: min(1160px, calc(100% - 40px));
+      width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 30px 0 54px;
+      padding: 26px 0 54px;
     }
 
     header {
@@ -89,32 +92,48 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 14px 0 42px;
+      padding: 12px 0 34px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 750;
+      gap: 14px;
+      min-width: 0;
+      font-weight: 800;
     }
 
     .mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--blue), var(--mint));
-      color: var(--white);
-      box-shadow: 0 10px 24px rgba(35, 183, 126, 0.28);
+      width: 52px;
+      height: 52px;
+      flex: none;
+      overflow: hidden;
+      border: 2px solid var(--lime);
+      border-radius: 50%;
+      background: var(--terminal);
+      box-shadow: 0 0 0 4px rgba(139, 210, 47, 0.12), 0 0 28px rgba(139, 210, 47, 0.3);
     }
 
-    .brand span:last-child {
-      color: var(--muted);
+    .mark img {
+      width: 100%;
+      height: 100%;
       display: block;
-      font-size: 0.9rem;
-      font-weight: 550;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      display: block;
+      color: var(--ink);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
     }
 
     nav {
@@ -122,139 +141,189 @@
       align-items: center;
       gap: 10px;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
 
+    nav a,
     .theme-toggle {
       min-height: 38px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       padding: 0 12px;
       border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--white);
+      border-radius: 8px;
+      background: var(--surface);
       color: var(--ink);
-      cursor: pointer;
       font: inherit;
-      font-weight: 750;
-      box-shadow: 0 8px 20px rgba(40, 54, 74, 0.08);
+      font-weight: 800;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
     }
 
+    nav a:hover,
     .theme-toggle:hover {
-      border-color: var(--blue);
+      border-color: var(--lime);
+      color: var(--ink);
+      box-shadow: 0 0 0 3px rgba(139, 210, 47, 0.16);
+    }
+
+    .theme-toggle {
+      gap: 8px;
+      cursor: pointer;
     }
 
     .theme-icon {
-      width: 18px;
+      width: 20px;
+      color: var(--lime);
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
       text-align: center;
     }
 
-    nav a {
-      padding: 8px 10px;
-      border-bottom: 3px solid transparent;
-    }
-
-    nav a:hover {
-      border-color: var(--gold);
-    }
-
     .hero {
+      position: relative;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-      gap: 34px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 0.72fr);
+      gap: 28px;
+      min-height: 520px;
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background:
+        linear-gradient(90deg, rgba(3, 5, 3, 0.92), rgba(5, 9, 5, 0.78)),
+        url("assets/brand/aitops-banner.jpg") center / cover no-repeat;
+      box-shadow: var(--shadow);
+      color: var(--white);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(139, 210, 47, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 210, 47, 0.09) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(90deg, black, transparent 88%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--lime), transparent);
+      box-shadow: 0 0 24px var(--hero-glow);
+    }
+
+    .hero-copy,
+    .command-panel {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-copy {
-      padding: 34px 0 22px;
+      align-self: center;
     }
 
     .eyebrow {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      margin-bottom: 18px;
-      color: var(--mint);
-      font-size: 0.88rem;
-      font-weight: 700;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--lime-2);
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
 
     .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 4px;
-      border-radius: 999px;
-      background: var(--mint);
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 790px;
-      font-size: clamp(2.8rem, 7vw, 6.4rem);
-      line-height: 0.94;
+      content: ">_";
+      color: var(--lime);
+      font-size: 1.08rem;
       letter-spacing: 0;
     }
 
+    h1 {
+      max-width: 740px;
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(2.7rem, 7vw, 6.2rem);
+      line-height: 0.94;
+      letter-spacing: 0;
+      text-shadow: 0 2px 26px rgba(0, 0, 0, 0.5);
+    }
+
     .lead {
-      max-width: 650px;
+      max-width: 640px;
       margin: 24px 0 0;
-      color: var(--muted);
+      color: #dce8d7;
       font-size: 1.12rem;
+      font-weight: 650;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
     .button {
+      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
       padding: 0 16px;
+      border: 1px solid rgba(139, 210, 47, 0.42);
       border-radius: 8px;
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-weight: 700;
-      box-shadow: 0 8px 20px rgba(40, 54, 74, 0.08);
+      background: rgba(10, 16, 9, 0.9);
+      color: var(--white);
+      font-weight: 850;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 26px rgba(0, 0, 0, 0.28);
     }
 
     .button.primary {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: var(--white);
+      background: var(--lime);
+      border-color: var(--lime);
+      color: #111a0e;
     }
 
     .button:hover {
+      color: var(--white);
       transform: translateY(-1px);
     }
 
-    .feature-board {
-      min-height: 430px;
-      padding: 18px;
-      border: 1px solid rgba(47, 128, 237, 0.18);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(47, 128, 237, 0.96), rgba(35, 183, 126, 0.9) 52%, rgba(242, 183, 5, 0.88));
-      box-shadow: var(--shadow);
+    .button.primary:hover {
+      color: #111a0e;
     }
 
-    .board-inner {
-      height: 100%;
+    .command-panel {
+      align-self: stretch;
       display: grid;
       grid-template-rows: auto 1fr auto;
-      gap: 18px;
-      padding: 22px;
-      border-radius: 8px;
-      background: var(--board-glass);
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid rgba(139, 210, 47, 0.32);
+      border-radius: 10px;
+      background: rgba(3, 5, 3, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 35px rgba(139, 210, 47, 0.08);
       backdrop-filter: blur(8px);
+    }
+
+    .terminal-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--lime);
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.84rem;
+      font-weight: 800;
     }
 
     .signal-grid {
@@ -264,58 +333,68 @@
     }
 
     .signal {
-      min-height: 112px;
+      min-height: 122px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       padding: 14px;
+      border: 1px solid rgba(139, 210, 47, 0.22);
       border-radius: 8px;
-      border: 1px solid var(--signal-border);
-      background: var(--white);
+      background: linear-gradient(180deg, rgba(17, 24, 16, 0.95), rgba(7, 11, 7, 0.95));
+      color: var(--white);
       transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
     }
 
     .signal:hover {
-      border-color: var(--signal-hover);
-      box-shadow: 0 12px 24px rgba(40, 54, 74, 0.12);
-      color: var(--ink);
+      border-color: var(--lime);
+      color: var(--white);
+      box-shadow: 0 0 24px rgba(139, 210, 47, 0.18);
       transform: translateY(-2px);
     }
 
     .signal strong {
-      display: block;
-      font-size: 1.55rem;
+      color: var(--lime-2);
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 1.36rem;
       line-height: 1;
     }
 
     .signal span {
       display: block;
-      margin-top: 8px;
-      color: var(--muted);
+      margin-top: 9px;
+      color: #c8d6c1;
       font-size: 0.88rem;
     }
 
     .signal em {
       display: block;
-      margin-top: 12px;
-      color: var(--blue);
-      font-size: 0.82rem;
+      margin-top: 13px;
+      color: var(--lime);
+      font-size: 0.78rem;
       font-style: normal;
-      font-weight: 800;
+      font-weight: 850;
+      text-transform: uppercase;
     }
 
-    .strip {
-      height: 56px;
+    .status-list {
       display: grid;
-      grid-template-columns: 1.1fr 0.8fr 1fr 0.7fr;
       gap: 8px;
+      color: #c8d6c1;
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
     }
 
-    .strip div {
-      border-radius: 8px;
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(139, 210, 47, 0.14);
     }
 
-    .strip div:nth-child(1) { background: var(--coral); }
-    .strip div:nth-child(2) { background: var(--gold); }
-    .strip div:nth-child(3) { background: var(--blue); }
-    .strip div:nth-child(4) { background: var(--mint); }
+    .status-row strong {
+      color: var(--lime-2);
+    }
 
     main {
       display: grid;
@@ -345,51 +424,62 @@
       text-align: right;
     }
 
-    .projects {
+    .projects,
+    .links {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
+    .links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project,
+    .link-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 10px 28px rgba(32, 45, 30, 0.08);
+    }
+
     .project {
-      min-height: 236px;
+      min-height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 22px;
-      overflow: hidden;
-      padding: 0;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 10px 28px rgba(40, 54, 74, 0.08);
     }
 
-    .project:hover {
-      border-color: rgba(47, 128, 237, 0.55);
+    .project:hover,
+    .link-panel:hover {
+      border-color: var(--lime);
+      color: var(--ink);
       transform: translateY(-2px);
     }
 
     .project-top {
-      min-height: 76px;
+      min-height: 84px;
       display: flex;
       align-items: flex-end;
       padding: 16px;
       color: var(--white);
-      font-weight: 800;
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-weight: 850;
+      text-transform: uppercase;
     }
 
-    .project:nth-child(1) .project-top { background: linear-gradient(135deg, var(--blue), var(--violet)); }
-    .project:nth-child(2) .project-top { background: linear-gradient(135deg, var(--coral), var(--gold)); }
-    .project:nth-child(3) .project-top { background: linear-gradient(135deg, var(--mint), #19a0a5); }
+    .project:nth-child(1) .project-top { background: linear-gradient(135deg, #10210d, #3f8b18); }
+    .project:nth-child(2) .project-top { background: linear-gradient(135deg, #141a10, #7bb725); }
+    .project:nth-child(3) .project-top { background: linear-gradient(135deg, #091008, #26411c); }
 
     .project-body {
-      padding: 0 18px 18px;
+      padding: 18px;
     }
 
     .project h3 {
       margin: 0 0 8px;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
     }
 
     .project p {
@@ -407,21 +497,13 @@
 
     .tag {
       padding: 4px 8px;
+      border: 1px solid rgba(139, 210, 47, 0.26);
       border-radius: 999px;
+      background: var(--surface-2);
       color: var(--ink);
-      font-size: 0.76rem;
-      font-weight: 700;
-    }
-
-    .tag.blue { background: var(--sky); }
-    .tag.green { background: var(--green-soft); }
-    .tag.orange { background: var(--orange-soft); }
-    .tag.violet { background: var(--violet-soft); }
-
-    .links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 850;
     }
 
     .link-panel {
@@ -430,15 +512,7 @@
       gap: 18px;
       align-items: center;
       padding: 18px 20px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-left: 8px solid var(--gold);
-      border-radius: 8px;
-      box-shadow: 0 10px 28px rgba(40, 54, 74, 0.07);
-    }
-
-    .link-panel:nth-child(2) {
-      border-left-color: var(--mint);
+      border-left: 8px solid var(--lime);
     }
 
     .link-panel span {
@@ -452,10 +526,11 @@
       padding-top: 24px;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.88rem;
+      font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 940px) {
       header,
       .section-head {
         align-items: flex-start;
@@ -472,8 +547,9 @@
         grid-template-columns: 1fr;
       }
 
-      .feature-board {
-        min-height: 360px;
+      .hero {
+        min-height: auto;
+        padding: 26px;
       }
 
       .section-head p {
@@ -483,21 +559,16 @@
 
     @media (max-width: 560px) {
       .page {
-        width: min(100% - 28px, 1160px);
+        width: min(100% - 28px, 1180px);
         padding-top: 18px;
       }
 
-      .signal-grid,
-      .strip {
+      .hero {
+        padding: 20px;
+      }
+
+      .signal-grid {
         grid-template-columns: 1fr;
-      }
-
-      .strip {
-        height: auto;
-      }
-
-      .strip div {
-        min-height: 18px;
       }
     }
   </style>
@@ -506,10 +577,10 @@
   <div class="page">
     <header>
       <a class="brand" href="/">
-        <span class="mark">CK</span>
+        <span class="mark"><img src="assets/brand/aitops-icon.jpg" alt=""></span>
         <span>
-          Christian Kolehmainen
-          <span>Homelab, embedded systems, and operations tooling</span>
+          <span class="brand-title">Christian Kolehmainen</span>
+          <span class="brand-subtitle">root@aitops:~$ status</span>
         </span>
       </a>
       <nav aria-label="Primary">
@@ -524,7 +595,7 @@
 
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Public project index</div>
+        <div class="eyebrow">Practical AI infrastructure</div>
         <h1>Practical tools for labs, devices, and operations.</h1>
         <p class="lead">Focused work across embedded hardware, test rigs, and infrastructure tooling.</p>
         <div class="actions">
@@ -533,42 +604,37 @@
         </div>
       </div>
 
-      <div class="feature-board" aria-label="Project highlights">
-        <div class="board-inner">
-          <div class="strip" aria-hidden="true">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="signal-grid">
-            <a class="signal" href="https://github.com/kolec94/tdongle-s3-hid">
-              <strong>ESP32</strong>
-              <span>USB HID and device-control experiments</span>
-              <em>Open T-Dongle S3 HID</em>
-            </a>
-            <a class="signal" href="https://github.com/kolec94/wemos-wifi-barodcaster">
-              <strong>ESP8266</strong>
-              <span>Arduino firmware with lab-first validation</span>
-              <em>Open Wemos WiFi Broadcaster</em>
-            </a>
-            <a class="signal" href="https://github.com/kolec94/NOC-Simulator">
-              <strong>NOC</strong>
-              <span>Operations simulations and response practice</span>
-              <em>Open NOC Simulator</em>
-            </a>
-            <a class="signal" href="https://github.com/kolec94">
-              <strong>GitHub</strong>
-              <span>Full public repository list and current work</span>
-              <em>Open GitHub profile</em>
-            </a>
-          </div>
-          <div class="strip" aria-hidden="true">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+      <div class="command-panel" aria-label="Project highlights">
+        <div class="terminal-line">
+          <span>root@aitops:~$ ./inventory</span>
+          <span>ONLINE</span>
+        </div>
+        <div class="signal-grid">
+          <a class="signal" href="https://github.com/kolec94/tdongle-s3-hid">
+            <strong>ESP32</strong>
+            <span>USB HID and device-control experiments</span>
+            <em>Open T-Dongle S3 HID</em>
+          </a>
+          <a class="signal" href="https://github.com/kolec94/wemos-wifi-barodcaster">
+            <strong>ESP8266</strong>
+            <span>Arduino firmware with lab-first validation</span>
+            <em>Open Wemos WiFi Broadcaster</em>
+          </a>
+          <a class="signal" href="https://github.com/kolec94/NOC-Simulator">
+            <strong>NOC</strong>
+            <span>Operations simulations and response practice</span>
+            <em>Open NOC Simulator</em>
+          </a>
+          <a class="signal" href="https://github.com/kolec94">
+            <strong>GitHub</strong>
+            <span>Full public repository list and current work</span>
+            <em>Open GitHub profile</em>
+          </a>
+        </div>
+        <div class="status-list">
+          <div class="status-row"><span>Infrastructure</span><strong>ONLINE</strong></div>
+          <div class="status-row"><span>Knowledge</span><strong>INDEXED</strong></div>
+          <div class="status-row"><span>Automation</span><strong>ACTIVE</strong></div>
         </div>
       </div>
     </section>
@@ -581,40 +647,40 @@
         </div>
         <div class="projects">
           <a class="project" href="https://github.com/kolec94/tdongle-s3-hid">
-            <div class="project-top">Live Pages Project</div>
+            <div class="project-top">Local AI / Device Control</div>
             <div class="project-body">
               <h3>T-Dongle S3 HID</h3>
               <p>ESP32-S3 HID work with a published GitHub Pages project page.</p>
               <div class="tags">
-                <span class="tag blue">ESP32-S3</span>
-                <span class="tag violet">HID</span>
-                <span class="tag green">Pages</span>
+                <span class="tag">ESP32-S3</span>
+                <span class="tag">HID</span>
+                <span class="tag">Pages</span>
               </div>
             </div>
           </a>
 
           <a class="project" href="https://github.com/kolec94/wemos-wifi-barodcaster">
-            <div class="project-top">Firmware Lab</div>
+            <div class="project-top">Enterprise Hardware Lab</div>
             <div class="project-body">
               <h3>Wemos WiFi Broadcaster</h3>
               <p>ESP8266 lab firmware with a captive portal UI and hardware test harness.</p>
               <div class="tags">
-                <span class="tag orange">ESP8266</span>
-                <span class="tag blue">Arduino</span>
-                <span class="tag green">Testing</span>
+                <span class="tag">ESP8266</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Testing</span>
               </div>
             </div>
           </a>
 
           <a class="project" href="https://github.com/kolec94/NOC-Simulator">
-            <div class="project-top">Operations Practice</div>
+            <div class="project-top">IT Operations</div>
             <div class="project-body">
               <h3>NOC Simulator</h3>
               <p>Network operations simulation work for practicing alerts, response, and observability flows.</p>
               <div class="tags">
-                <span class="tag green">Ops</span>
-                <span class="tag blue">Simulation</span>
-                <span class="tag violet">Learning</span>
+                <span class="tag">Ops</span>
+                <span class="tag">Simulation</span>
+                <span class="tag">Learning</span>
               </div>
             </div>
           </a>
@@ -640,7 +706,7 @@
     </main>
 
     <footer>
-      Built as a lightweight GitHub Pages index for current public projects.
+      root@aitops:~$ maintained as a lightweight GitHub Pages index
     </footer>
   </div>
   <script>

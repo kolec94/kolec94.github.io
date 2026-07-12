@@ -26,6 +26,7 @@ assets only.
 
 - `index.html` - root GitHub Pages homepage.
 - `README.md` - repository documentation and maintenance notes.
+- `assets/brand/` - AITOps-derived brand images used by the homepage.
 - `tdongle/` - standalone project page assets for the T-Dongle S3 HID work.
 
 Legacy root-level `.htm`, old CSS, unused images, tutorial assets, and temporary
