@@ -7,31 +7,40 @@
   <meta name="description" content="Projects and technical work by Christian Kolehmainen.">
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #101114;
-      --panel: #181b20;
-      --panel-2: #20242b;
-      --text: #f2f4f7;
-      --muted: #aeb6c2;
-      --line: #303640;
-      --accent: #68d391;
-      --accent-2: #63b3ed;
+      color-scheme: light;
+      --ink: #18212f;
+      --muted: #5d6a7a;
+      --paper: #fffaf2;
+      --white: #ffffff;
+      --line: #d9e0e8;
+      --mint: #23b77e;
+      --blue: #2f80ed;
+      --coral: #f06449;
+      --gold: #f2b705;
+      --violet: #7c5cff;
+      --sky: #dff2ff;
+      --green-soft: #def8eb;
+      --orange-soft: #ffe7d7;
+      --violet-soft: #eee8ff;
+      --shadow: 0 18px 45px rgba(40, 54, 74, 0.12);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      background: var(--paper);
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      background:
-        linear-gradient(120deg, rgba(104, 211, 145, 0.08), transparent 32rem),
-        linear-gradient(240deg, rgba(99, 179, 237, 0.08), transparent 34rem),
-        var(--bg);
-      color: var(--text);
+      color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
+      background:
+        linear-gradient(180deg, #fffdf8 0, #fff4e6 34rem, #f6fbff 68rem, #fffaf2 100%);
     }
 
     a {
@@ -40,13 +49,13 @@
     }
 
     a:hover {
-      color: var(--accent);
+      color: var(--blue);
     }
 
     .page {
-      width: min(1120px, calc(100% - 40px));
+      width: min(1160px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 44px 0 56px;
+      padding: 30px 0 54px;
     }
 
     header {
@@ -54,96 +63,217 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding-bottom: 52px;
+      padding: 14px 0 42px;
     }
 
     .brand {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
     }
 
-    .name {
-      font-size: 1rem;
-      font-weight: 700;
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--mint));
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(35, 183, 126, 0.28);
     }
 
-    .role {
+    .brand span:last-child {
       color: var(--muted);
-      font-size: 0.92rem;
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 550;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
+    }
+
+    nav a {
+      padding: 8px 10px;
+      border-bottom: 3px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: var(--gold);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-      gap: 32px;
-      align-items: end;
-      padding-bottom: 44px;
-      border-bottom: 1px solid var(--line);
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 34px 0 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 18px;
+      color: #145f48;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--mint);
     }
 
     h1 {
       margin: 0;
-      max-width: 820px;
-      font-size: clamp(2.4rem, 7vw, 5.8rem);
-      line-height: 0.95;
+      max-width: 790px;
+      font-size: clamp(2.8rem, 7vw, 6.4rem);
+      line-height: 0.94;
       letter-spacing: 0;
     }
 
-    .status {
-      display: grid;
+    .lead {
+      max-width: 650px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      padding: 18px;
-      background: rgba(24, 27, 32, 0.78);
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 8px;
       border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(40, 54, 74, 0.08);
+    }
+
+    .button.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .feature-board {
+      min-height: 430px;
+      padding: 18px;
+      border: 1px solid rgba(47, 128, 237, 0.18);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(47, 128, 237, 0.96), rgba(35, 183, 126, 0.9) 52%, rgba(242, 183, 5, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .board-inner {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(8px);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .signal {
+      min-height: 112px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(24, 33, 47, 0.08);
+      background: var(--white);
+    }
+
+    .signal strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .signal span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .strip {
+      height: 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.8fr 1fr 0.7fr;
+      gap: 8px;
+    }
+
+    .strip div {
       border-radius: 8px;
     }
 
-    .status-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .status-row strong {
-      color: var(--text);
-      font-weight: 650;
-      text-align: right;
-    }
+    .strip div:nth-child(1) { background: var(--coral); }
+    .strip div:nth-child(2) { background: var(--gold); }
+    .strip div:nth-child(3) { background: var(--blue); }
+    .strip div:nth-child(4) { background: var(--mint); }
 
     main {
       display: grid;
-      gap: 34px;
-      padding-top: 36px;
+      gap: 38px;
+      padding-top: 46px;
     }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 24px;
       align-items: end;
+      margin-bottom: 16px;
     }
 
     h2 {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
+      letter-spacing: 0;
     }
 
     .section-head p {
       max-width: 540px;
       margin: 0;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       text-align: right;
     }
 
@@ -154,25 +284,44 @@
     }
 
     .project {
-      min-height: 190px;
+      min-height: 236px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 24px;
-      padding: 20px;
-      background: var(--panel);
+      gap: 22px;
+      overflow: hidden;
+      padding: 0;
+      background: var(--white);
       border: 1px solid var(--line);
       border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(40, 54, 74, 0.08);
     }
 
     .project:hover {
-      border-color: rgba(104, 211, 145, 0.65);
-      background: var(--panel-2);
+      border-color: rgba(47, 128, 237, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .project-top {
+      min-height: 76px;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .project:nth-child(1) .project-top { background: linear-gradient(135deg, var(--blue), var(--violet)); }
+    .project:nth-child(2) .project-top { background: linear-gradient(135deg, var(--coral), var(--gold)); }
+    .project:nth-child(3) .project-top { background: linear-gradient(135deg, var(--mint), #19a0a5); }
+
+    .project-body {
+      padding: 0 18px 18px;
     }
 
     .project h3 {
       margin: 0 0 8px;
-      font-size: 1.06rem;
+      font-size: 1.08rem;
     }
 
     .project p {
@@ -185,15 +334,21 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 20px;
     }
 
     .tag {
       padding: 4px 8px;
       border-radius: 999px;
-      background: #252a31;
-      color: #cbd3df;
+      color: var(--ink);
       font-size: 0.76rem;
+      font-weight: 700;
     }
+
+    .tag.blue { background: var(--sky); }
+    .tag.green { background: var(--green-soft); }
+    .tag.orange { background: var(--orange-soft); }
+    .tag.violet { background: var(--violet-soft); }
 
     .links {
       display: grid;
@@ -207,14 +362,21 @@
       gap: 18px;
       align-items: center;
       padding: 18px 20px;
-      background: var(--panel);
+      background: var(--white);
       border: 1px solid var(--line);
+      border-left: 8px solid var(--gold);
       border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(40, 54, 74, 0.07);
+    }
+
+    .link-panel:nth-child(2) {
+      border-left-color: var(--mint);
     }
 
     .link-panel span {
       color: var(--muted);
       font-size: 0.9rem;
+      text-align: right;
     }
 
     footer {
@@ -225,7 +387,7 @@
       font-size: 0.88rem;
     }
 
-    @media (max-width: 840px) {
+    @media (max-width: 900px) {
       header,
       .section-head {
         align-items: flex-start;
@@ -242,8 +404,32 @@
         grid-template-columns: 1fr;
       }
 
+      .feature-board {
+        min-height: 360px;
+      }
+
       .section-head p {
         text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 28px, 1160px);
+        padding-top: 18px;
+      }
+
+      .signal-grid,
+      .strip {
+        grid-template-columns: 1fr;
+      }
+
+      .strip {
+        height: auto;
+      }
+
+      .strip div {
+        min-height: 18px;
       }
     }
   </style>
@@ -252,8 +438,11 @@
   <div class="page">
     <header>
       <a class="brand" href="/">
-        <span class="name">Christian Kolehmainen</span>
-        <span class="role">Homelab, embedded systems, and operations tooling</span>
+        <span class="mark">CK</span>
+        <span>
+          Christian Kolehmainen
+          <span>Homelab, embedded systems, and operations tooling</span>
+        </span>
       </a>
       <nav aria-label="Primary">
         <a href="https://github.com/kolec94">GitHub</a>
@@ -262,19 +451,48 @@
     </header>
 
     <section class="hero">
-      <h1>Systems projects with hardware close by.</h1>
-      <div class="status" aria-label="Project status">
-        <div class="status-row">
-          <span>Focus</span>
-          <strong>ESP32, ESP8266, labs</strong>
+      <div class="hero-copy">
+        <div class="eyebrow">Public project index</div>
+        <h1>Systems projects with color, hardware, and useful links.</h1>
+        <p class="lead">A cleaner front door for firmware experiments, lab validation tools, and operations projects that are worth keeping visible.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/kolec94">Open GitHub</a>
+          <a class="button" href="https://kolec94.github.io/tdongle-s3-hid/">View T-Dongle Page</a>
         </div>
-        <div class="status-row">
-          <span>Public repos</span>
-          <strong>Firmware and tools</strong>
-        </div>
-        <div class="status-row">
-          <span>Pages</span>
-          <strong>Project demos live</strong>
+      </div>
+
+      <div class="feature-board" aria-label="Project highlights">
+        <div class="board-inner">
+          <div class="strip" aria-hidden="true">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="signal-grid">
+            <div class="signal">
+              <strong>ESP32</strong>
+              <span>USB HID and device-control experiments</span>
+            </div>
+            <div class="signal">
+              <strong>ESP8266</strong>
+              <span>Arduino firmware with lab-first validation</span>
+            </div>
+            <div class="signal">
+              <strong>NOC</strong>
+              <span>Operations simulations and response practice</span>
+            </div>
+            <div class="signal">
+              <strong>Pages</strong>
+              <span>Live project surfaces for quick sharing</span>
+            </div>
+          </div>
+          <div class="strip" aria-hidden="true">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -287,38 +505,41 @@
         </div>
         <div class="projects">
           <a class="project" href="https://github.com/kolec94/tdongle-s3-hid">
-            <div>
+            <div class="project-top">Live Pages Project</div>
+            <div class="project-body">
               <h3>T-Dongle S3 HID</h3>
               <p>ESP32-S3 HID work with a published GitHub Pages project page.</p>
-            </div>
-            <div class="tags">
-              <span class="tag">ESP32-S3</span>
-              <span class="tag">HID</span>
-              <span class="tag">Pages</span>
+              <div class="tags">
+                <span class="tag blue">ESP32-S3</span>
+                <span class="tag violet">HID</span>
+                <span class="tag green">Pages</span>
+              </div>
             </div>
           </a>
 
           <a class="project" href="https://github.com/kolec94/wemos-wifi-barodcaster">
-            <div>
+            <div class="project-top">Firmware Lab</div>
+            <div class="project-body">
               <h3>Wemos WiFi Broadcaster</h3>
               <p>ESP8266 lab firmware with a captive portal UI and hardware test harness.</p>
-            </div>
-            <div class="tags">
-              <span class="tag">ESP8266</span>
-              <span class="tag">Arduino</span>
-              <span class="tag">Testing</span>
+              <div class="tags">
+                <span class="tag orange">ESP8266</span>
+                <span class="tag blue">Arduino</span>
+                <span class="tag green">Testing</span>
+              </div>
             </div>
           </a>
 
           <a class="project" href="https://github.com/kolec94/NOC-Simulator">
-            <div>
+            <div class="project-top">Operations Practice</div>
+            <div class="project-body">
               <h3>NOC Simulator</h3>
               <p>Network operations simulation work for practicing alerts, response, and observability flows.</p>
-            </div>
-            <div class="tags">
-              <span class="tag">Ops</span>
-              <span class="tag">Simulation</span>
-              <span class="tag">Learning</span>
+              <div class="tags">
+                <span class="tag green">Ops</span>
+                <span class="tag blue">Simulation</span>
+                <span class="tag violet">Learning</span>
+              </div>
             </div>
           </a>
         </div>
