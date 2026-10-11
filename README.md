@@ -15,7 +15,7 @@ theme.
 The homepage provides a lightweight project index with links to:
 
 - The `kolec94` GitHub profile.
-- The `tdongle-s3-hid` GitHub Pages site.
+- The `esp32-s3-hid-dongle` GitHub Pages site.
 - Current public hardware, firmware, and operations-tooling repositories.
 
 Old coursework chapter exports are intentionally not kept in this repository.
@@ -27,7 +27,7 @@ assets only.
 - `index.html` - root GitHub Pages homepage.
 - `README.md` - repository documentation and maintenance notes.
 - `assets/brand/` - AITOps-derived brand images used by the homepage.
-- `tdongle/` - standalone project page assets for the T-Dongle S3 HID work.
+- `tdongle/` - standalone project page assets for the ESP32-S3 HID Dongle work.
 
 Legacy root-level `.htm`, old CSS, unused images, tutorial assets, and temporary
 text files are intentionally removed so the repository only contains current
